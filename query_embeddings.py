@@ -27,7 +27,7 @@ def t_sne():
   return zip(hero_names, X_embedded)
 
 if __name__ == '__main__':
-  for x in get_similar(hero_idxs["Silencer"]):
+  for x in get_similar(hero_idxs["Axe"]):
     print x
 
   tt = t_sne()

@@ -1,4 +1,5 @@
-# dota_hero_semantic_embedding
+# A semantic embedding of Dota 2 Heros
+
 embed dota2 heros w2v style based on drafts
 
 ![alt text](https://raw.githubusercontent.com/evanthebouncy/dota_hero_semantic_embedding/master/embedded_pix/embed1.png)
@@ -87,30 +88,68 @@ xentropy on each output bit. Simple enough.
 The resulted embedding can be used for various fun stuff like similarity, or
 plotted in 2D if we first reduce the dimension with tsne.
 
-## scrape_games.py
-scrape opendota api for radiant/dire draft and winning team, only the drafts are used, the winning / losing are ignored
+Incidentally, these are the top 4 similar hero to rhasta:
 
-## scrape_hero.py
+    (0.0, u'Shadow Shaman')
+    (0.32796648, u'Keeper of the Light')
+    (0.46663746, u'Rubick')
+    (0.47017339, u'Dark Willow')
+    (0.48853499, u'Lion')
+    (0.50325406, u'Jakiro')
+
+As you can see, Lion is not exactly the same, but it seems to be a group of supports.
+
+We can also look at what are the similar hero to axe:
+
+    (0.0, u'Axe')
+    (0.3325673, u'Lycan')
+    (0.36000824, u'Centaur Warrunner')
+    (0.39020795, u'Lich')
+    (0.39779869, u'Beastmaster')
+    (0.40312102, u'Venomancer')
+    (0.40369415, u'Riki')
+    (0.4046663, u'Tusk')
+    (0.41234338, u'Slardar')
+    (0.41594386, u'Undying')
+
+So perhapse a smattering of offlane heros and jungle heros.
+
+You can modify the file query\_embeddings.py for these kind of similarities, you do not need any tensorflow as the embeddings are stored already in hero\_embeddings.p
+
+## Some files and what they do if you want to mess with the code
+
+### scrape_games.py
+scrape opendota api for radiant/dire draft and winning team. For this project, only the drafts
+are used, the winning / losing are ignored
+
+### scrape_hero.py
 scrape the opendota api for hero indexes
 
-## data.py
+### data.py
 sample a random team draft and produce the following input-output pairs
 
 1-hot encoded single hero to a bag-of-word (multi-hot) encoded teammate drafts
 
-## model.py
+### model.py
 the neural network model as described, see code for more detail, I assume if you're looking at this you know what you're doing. The tricky part is the index-by-index xentropy loss function where some tensorflow hackery happens, the rest is simple enough.
 
-## script_train.py
-trains the model, stores the ckpt files under the models/ directory, which doesn't exist in the repo cuz I didn't want to add the actual models to git
+### script_train.py
+trains the model, stores the ckpt files under the models/ directory, which
+doesn't exist in the repo cuz I didn't want to add the actual models to github,
+it's fairly large
 
-## get_embedding.py
+### get_embedding.py
 save the embedding into a pickle file
 
-## query_embedding.py
-Play with this file for different embedding tasks such as finding which heros are similar to another, also give the 2d t-sne representatino for visualization
+### query_embedding.py
+Play with this file for different embedding tasks such as finding which heros
+are similar to another, also give the 2d t-sne representatino for
+visualization. This is the most useful file to look at first.
 
-## drawings/
+### hero_embeddings.p
+The stored pickle file for trained hero embeddings. You can use it as is, does not require tensorflow as it is already trained and stored here.
+
+### drawings/
 Some simple drawing on a html5 canvas. Change the file data\_vis.js to draw different pictures. There are some junk files in this directory I'm too lazy to clean up.
 
 ## Related Work
