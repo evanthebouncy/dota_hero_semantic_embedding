@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+  <canvas id="myCanvas" width="1800" height="1800"
+  style="border:1px solid #d3d3d3;">
+  Your browser does not support the canvas element.
+  </canvas>
+
+  <script type="text/javascript" src="data_vis.js"></script>
+  <script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.font = "bold 14px Arial";
+
+    var x_min = 0
+    var x_max = 0
+    var y_min = 0
+    var y_max = 0
+    for (var key in data_vis) {
+      if (data_vis.hasOwnProperty(key)) {
+        var x = data_vis[key][0]
+        var y = data_vis[key][1]
+        var x_min = Math.min(x, x_min)
+        var x_max = Math.max(x, x_max)
+        var y_min = Math.min(y, y_min)
+        var y_max = Math.max(y, y_max)
+      }
+    }
+
+    scale = Math.max(x_max - x_min, y_max - y_min)
+
+    for (var key in data_vis) {
+      if (data_vis.hasOwnProperty(key)) {
+        var x = (data_vis[key][0] - x_min) / scale 
+        var y = (data_vis[key][1] - y_min) / scale 
+        ctx.fillText(key,1600*x+100,1600*y+100);
+      }
+    }
+
+    var img_loc = {}
+    for (var key in data_vis) {
+      if (data_vis.hasOwnProperty(key)) {
+        var img = new Image();
+        var x = (data_vis[key][0] - x_min) / scale 
+        var y = (data_vis[key][1] - y_min) / scale 
+        var xx = 1600*x+100
+        var yy = 1600*y+100
+        img_loc[img] = [xx, yy]
+        img["xx"] = xx
+        img["yy"] = yy
+        console.log(img_loc)
+        img.onload = function () {
+          var xy = img_loc[this]
+          console.log("XYXY", xy)
+          console.log(this["xx"])
+          console.log("fuck man fuck", img_loc)
+          ctx.drawImage(this, this["xx"], this["yy"], 60, 60)
+        }
+        img.src = "images/".concat(key,"_icon.png");
+      }
+    }
+
+    console.log("fuck", x_min, y_min)
+
+  </script>
+
+  </body>
+</html>
+
