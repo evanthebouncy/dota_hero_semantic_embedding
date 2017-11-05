@@ -1,6 +1,9 @@
 # dota_hero_semantic_embedding
 embed dota2 heros w2v style based on drafts
 
+![alt text](https://raw.githubusercontent.com/evanthebouncy/dota_hero_semantic_embedding/master/embedded_pix/embed1.png)
+
+
 # What is this
 
 Word2Vec is an embedding technique in NLP where, using a large textual corpus, words are "embedded" into a dense subspace where "similar" words are closer together. 
