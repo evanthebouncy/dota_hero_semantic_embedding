@@ -12,21 +12,25 @@ together.
 
 https://en.wikipedia.org/wiki/Word2vec
 
-On a high level, two words are considered "similar" if they have similar context of surrounding words. So for example, if I have two sentences "I love my cat, he is cute" and "I love my dog, he is cute", then "cat" and "dog" are similar to each other because they share the same surrounding word context "I love . . ., he is cute".
+On a high level, two words are considered "similar" if they have similar
+context of surrounding words. So for example, if I have two sentences "I love
+my cat, he is cute" and "I love my dog, he is cute", then "cat" and "dog" are
+similar to each other because they share the same surrounding word context "I
+love \_\_\_, he is cute".
 
 
-# scrape_games.py
+## scrape_games.py
 scrape opendota api for radiant/dire draft and winning team, only the drafts are used, the winning / losing are ignored
 
-# scrape_hero.py
+## scrape_hero.py
 scrape the opendota api for hero indexes
 
-# data.py
+## data.py
 sample a random team draft and produce the following input-output pairs
 
 1-hot encoded single hero to a bag-of-word (multi-hot) encoded teammate drafts
 
 
 
-
+## some system details
 Using python 2.7 and tensorflow 1.0.1 so something might not be compatible.
