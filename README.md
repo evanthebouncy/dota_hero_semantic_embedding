@@ -167,3 +167,5 @@ generalizing across similar hero roles.
 Using python 2.7 and tensorflow 1.0.1 so something might not be compatible. This thing trains rather quickly, like 5 minutes or even less on my machine with some Nvidia960 GPU laptop thing.
 
 Enjoy!!
+
+--evanthebouncy
