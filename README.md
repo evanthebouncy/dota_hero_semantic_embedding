@@ -6,7 +6,11 @@ embed dota2 heros w2v style based on drafts
 
 # What is this
 
-Word2Vec is an embedding technique in NLP where, using a large textual corpus, words are "embedded" into a dense subspace where "similar" words are closer together. 
+Word2Vec is an embedding technique in NLP (natural language proccessing) where, using a large textual corpus,
+words are "embedded" into a dense subspace where "similar" words are closer
+together. 
+
+https://en.wikipedia.org/wiki/Word2vec
 
 On a high level, two words are considered "similar" if they have similar context of surrounding words. So for example, if I have two sentences "I love my cat, he is cute" and "I love my dog, he is cute", then "cat" and "dog" are similar to each other because they share the same surrounding word context "I love . . ., he is cute".
 
